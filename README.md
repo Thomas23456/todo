@@ -1,71 +1,61 @@
-# Framework PHP
+﻿
+1. Les fonctionnalités réalisées :
 
-Le framework étudié est Laravel, de la version 6 à 8. 
+ #En tant qu'utilisateur non connecté, je peux : 
+    - accéder à la page d'accueil
+    - me connecter si je suis enregistré
+    - m'enrigistrer si je ne le suis pas déjà
 
-## Les objectifs de ce cours
-
-- comprendre l'architecture du framework et les concepts
-  - Structurer son code
-  - Maîtriser l'accès aux données et leur persistance depuis un ORM 
-  -  La notion de ressource et de routage
-  - L'utilisation des contrôleurs
-- Sécuriser son code  et gérer les autorisations applicatives
-- Améliorer les temps de développement grâce aux outils du framework
-
-
-## Les supports
-
-Les supports seront réalisés pendant les cours et mis à  disposition sur moodle dès la fin du cours. 
-
-
-
-## Les modalités d'évaluation
-
-### Le code
-
-Le code produit sera déposé de manière régulière sur git. 
-
-Les critères d'évaluation du code seront les suivants : 
-
-- code commenté
-- passage de tests unitaires et d'intégration. 
-
-Ces tests seront fournis au préalable et vous aiderons pendant les phases de développement. 
-
- ### Les concepts
-
-En plus du code, vous fournirez pour chaque étapes clés un document expliquant les concepts mis en œuvre. Ce document devra entièrement être rédigé par vos soins. il sera passé à l'outil de détection de plagiat compilatio et le taux de similitude ne devra pas être supérieur à 15%, sous peine d'être rejeté et non évalué. 
-
-## L'organisation du travail
-
-Toute l'avancée sera réalisée sous forme de projet : à la fin des cours, vous aurez une application fonctionnelle développée tout au long du déroulement du module. 
+ #En tant qu'utilisateur connecté, je peux : 
+    - modifier mon profil
+    - me désinscrire
+    - créer un board  et j'en serais alors propriétaire (et plus tard automatiquement participant)
+    - aller sur les boards dont je suis participant
+  
+ #En tant que propriétaire d'un board, je peux : 
+    - inviter des utilisateurs, ils seront participants du board
+    - faire à minima toutes les actions que peuvent faire les utilisateur de mon board
+    - faire à minima toutes les actions que peuvent faire les participants des tâches de mon board
+    - supprimer le board
+    - supprimer un commentaire des tâches de mon board
+    - supprimer une pièce jointe des tâches de mon board
+    - faire toutes les actions d'un participant du board ou d'un utilisateur assigné à une tâche
+  
+ #En tant que participant d'un board (invité par son propriétaire), je peux
+    - créer une tâche 
+    - éditer tous les champs d'une tâches (sauf le status)
+    - commenter une tâche
+  
+ #En tant qu'assigné à une tâche, je peux : 
+    - changer son status
+    
+ #En tant que propriétaire d'un commentaire : 
+    - éditer le commentaire
+    - supprimer le commentaire
 
 
+2. Les points de blocage :
 
-### Sujet 
+ - Passage de tous les tests pour les relations entre les différentes tables
+ - Comprendre comment mettre en relation les différentes vues
+ - Utiliser les routes afin de changer de vues
+ - Changer de vue tout en gardant les infos précédentes
+ - Utilisations des jetons
+ - Comprendre les différentes actions du CRUD
 
-L'objectif sera de réaliser une application Web de gestion de tâche collaboratif. Pour utiliser cette application, l'utilisateur devra être enregistré et connecté. Une fois connecté, il pourra consulter/créer/modifier/supprimer des tâches, et y ajouter d'autres utilisateurs, enregistrés eux aussi. 
 
-Une tâche possède un titre, une description, une date de fin (*due_date*),  un propriétaire (lui seul peut la supprimer), une priorité, un état, une catégorie et peut posséder plusieurs documents en pièces jointe. 
+3. Les solutions mises en oeuvre :
 
-Une tâche peut être assignée à un de ces participants. 
+ - Recherches sur la doc laravel et correction des Models avec le prof en cours
+ - Mettre en place le debug pour mieux comprendre les erreurs
+ - Se baser sur les routes déjà existantes et construire celles nécessaires aux parties dévéloppées
+ - Reprendre les anciens liens, pour finalement comprendre qu'un post fonctionne en de la même façon en passant les arguments
+   c-a-d --> ex : {{route('tasks.destroy', [$board, $task])}} (ici on passe le board et la task associée pour le futur commentaire)
+ - Se renseigner sur la doc et suivre le cours
+ - Transformer les actions dont nous avions l'habitude et les adapter avec Laravel (ex : INSERT --> store() puis create())
 
-Chaque utilisateur peut rajouter des commentaires sur les tâches. Son nom et l'heure et la date du commentaire doivent être gardé, et il est possible d'éditer le commentaire (cela sera marqué sur le commentaire qu'il a été édité) et même de le supprimer.
 
-## Pour vous aider : 
-- faire les fichiers de migrations : 
+4. Les fonctionnalités non réalisées :
 
-  - https://laravel.com/docs/8.x/migrations
-  - Lire la doc pour concernant les bases de données : 
-
-- faire les modèles Eloquents : https://laravel.com/docs/8.x/eloquent
-
-  	- Lire la suite de la doc : il faut rajouter les relations : https://laravel.com/docs/8.x/eloquent-relationships
-
-  Vous pouvez essayer de générer des données au moyen de seeders  et/ou de factories : https://laravel.com/docs/8.x/seeding
-
-Un blog très pertinent  : http://laravel.sillo.org/ 
-
-## Le mcd de l'application
-
-[mcd]: https://raw.githubusercontent.com/NF-yac/todo-b2-20-21/master/database/mcd/todo.svg "MCD de l'application"
+ - CRUD pièces jointes (non demandée)
+ - transférer la propriété d'un board/d'une tâche
