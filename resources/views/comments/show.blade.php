@@ -4,8 +4,8 @@
 
 
 @section('content')
-    <h2>{{$task->title}}'s Comment</h2>
-    <p>{{$comment->text}}</p>
+    <div class="titre_boards">{{$task->title}}</div>
+    <div class="descript_board">Texte : {{$comment->text}}</div>
     <div class="participants">
         @foreach($task->assignedUsers as $user) 
             <p>{{$user->name}} : {{$user->email}}</p>
@@ -16,6 +16,5 @@
             </form> --}}
         @endforeach
     </div>
-
-
+    <div class="link_page2">Revenir aux commentaires <a href="{{route('comments.index', [$board, $task])}}">Commentaires</a></div>
 @endsection

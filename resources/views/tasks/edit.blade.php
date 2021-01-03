@@ -4,49 +4,62 @@
 
 
 @section('content')
-    <p>Add a board </p>
-    <div>
-        <form action="{{route('tasks.update', [$board, $task])}}" method="POST">
-            @csrf
-            @method('PUT')
-            <label for="title">title</label>
-            <input id="title" type="text" name="title" class="@error('title') is-invalid @enderror" value="{{$task->title}}">
+<div class="update_task">
+        <div>
+            <div class="titre_board">Créer une tâche</div>
+            <div>
+                <form action="{{route('tasks.update', [$board, $task])}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="component_margin">
+                        <label for="title">Titre : </label>
+                        <input id="title" type="text" name="title" class="@error('title') is-invalid @enderror" value="{{$task->title}}"><br/>
+                    </div>
+                    @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    
+                    <div class="component_margin">
+                        <label for="description">Description : </label>
+                        <input type='textarea' name='description' id="description"  value="{{$task->description}}"><br/>
+                    </div>
+                    @error('description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
 
-            @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            
-            <label for="description">Description</label>
-            <input type='textarea' name='description' id="description"  value="{{$task->description}}">
-            @error('description')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <br>
-            <label for="due_date">Date de fin</label>
-            <input type='date' name='due_date' id="due_date"  value="{{$task->due_date}}" >
-            <br>
-            <select name="category_id" id="category_id" value="{{$task->category_id}}">
-                @foreach ($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
-                @endforeach
-            </select>
-            @error('category')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <br>
-            <select name="state" id="state" value="{{$task->state}}">
-                @foreach (['todo', 'ongoing', 'done'] as $state)
-                <option value="{{$state}}">{{$state}}</option>
-                @endforeach
-            </select>
-            @error('category')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <br>
-            <button type="submit">Create</button>
-        </form>
-
+                    <div class="component_margin">
+                        <label for="due_date">Date de fin : </label>
+                        <input type='date' name='due_date' id="due_date"  value="{{$task->due_date}}"/><br/>
+                    </div>
+                    
+                    <div class="component_margin">
+                        <select name="category_id" id="category_id" value="{{$task->category_id}}">
+                            @foreach ($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('category')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    
+                    <div class="component_margin">
+                        <select name="state" id="state" value="{{$task->state}}">
+                            @foreach (['todo', 'ongoing', 'done'] as $state)
+                            <option value="{{$state}}">{{$state}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('category')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    
+                    <button type="submit" class="component_margin button_create">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
+    <div class="link_page2">Revenir aux tâches <a href="{{route('tasks.index', $board)}}">Tâches</a></div>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

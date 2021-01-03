@@ -4,22 +4,28 @@
 
 
 @section('content')
-    <p>Add a board </p>
-    <div>
-        <form action="{{route('comments.update', [$board, $task, $comment])}}" method="POST">
-            @csrf
-            @method('PUT')
-            
-            <label for="text">Commentaire</label>
-            <input type='textarea' name='text' id="text"  value="{{$comment->text}}">
-            @error('text')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <br>
-            <button type="submit">Update</button>
-        </form>
+<div class="add_com">
+        <div>
+            <div class="titre_board">Editer un commentaire</div>
+            <div>
+                <form action="{{route('comments.update', [$board, $task, $comment])}}" method="POST">
+                    @csrf
+                    @method('PUT')
 
+                    <div class="component_margin">
+                        <label for="text">Texte : </label>
+                        <input type='textarea' name='text' id="text" value="{{$comment->text}}"/><br/>
+                    </div>
+                    @error('text')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    
+                    <button type="submit" class="component_margin button_create">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
+    <div class="link_page2">Revenir aux commentaires <a href="{{route('comments.index', [$board, $task])}}">Commentaires</a></div>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

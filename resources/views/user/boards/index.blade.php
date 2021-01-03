@@ -20,7 +20,7 @@
     <div class="contain_table"><table class="table_boards">
         <tr>
             <td class="titre_column">Nom de la board</td>
-            <td class="titre_column">Accéder au détails</td>
+            <td class="titre_column">Accéder aux détails</td>
             <td class="titre_column">Accéder à l'édition</td>
             <td class="titre_column">Supprimer la board</td>
         </tr>

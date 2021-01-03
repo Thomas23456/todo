@@ -4,21 +4,26 @@
 
 
 @section('content')
-    <p>Add a comment </p>
-    <div>
-        <form action="{{route('comments.store', [$board, $task])}}" method="POST">
-            @csrf
+    <div class="add_com">
+        <div>
+            <div class="titre_board">Créer un commentaire</div>
+            <div>
+                <form action="{{route('comments.store', [$board, $task])}}" method="POST">
+                    @csrf
+                    <div class="component_margin">
+                        <label for="text">Texte : </label>
+                        <input type='textarea' name='text' id="text"/><br/>
+                    </div>
+                    @error('text')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
             
-            <label for="text">Description</label>
-            <input type='textarea' name='text' id="text" >
-            @error('text')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <br>
-            <button type="submit">Create</button>
-        </form>
-
+                    <button type="submit" class="component_margin button_create">Créer</button>
+                </form>
+            </div>
+        </div>
     </div>
+    <div class="link_page2">Revenir aux commentaires <a href="{{route('comments.index', [$board, $task])}}">Commentaires</a></div>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
