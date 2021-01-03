@@ -4,10 +4,8 @@
 
 
 @section('content')
-    <h2>{{$task->title}}</h2>
-    <p>{{$task->description}}</p>
-    <p>À finir avant le {{$task->due_date}}</p>
-    <p>Status :  {{$task->state}}</p>
+    <h2>{{$task->title}}'s Comment</h2>
+    <p>{{$comment->text}}</p>
     <div class="participants">
         @foreach($task->assignedUsers as $user) 
             <p>{{$user->name}} : {{$user->email}}</p>
@@ -18,6 +16,6 @@
             </form> --}}
         @endforeach
     </div>
-    <div class="link_page2">Cliquez ici pour accéder aux commentaires <a href="{{route('tasks.index', $board)}}">Commentaires</a></div>
+
 
 @endsection

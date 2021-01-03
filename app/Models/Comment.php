@@ -17,6 +17,13 @@ class Comment extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['text', 'task_id'];
+
+    /**
      * Renvoi l'utilisateur qui a écrit le commentaire
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

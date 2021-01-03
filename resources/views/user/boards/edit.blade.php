@@ -4,24 +4,30 @@
 
 
 @section('content')
-    <p>Add a board </p>
-    <div>
-        <form action="{{route('boards.update', $board)}}" method="POST">
-            @csrf
-            @method('PUT')
-            <label for="title">title</label>
-            <input id="title" name="title" type="text" class="@error('title') is-invalid @enderror" value="{{$board->title}}">
+    <div class="add_board">
+        <div>
+            <div class="titre_board">Editer un board</div>
+            <div>
+                <form action="{{route('boards.update', $board)}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="component_margin">
+                        <label for="title">Titre : </label>
+                        <input id="title" name="title" type="text" class="@error('title') is-invalid @enderror" value="{{$board->title}}">
+                    </div>
 
-            @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            
-            <label for="description">Description</label>
-            <input type='textarea' name='description' id="description" value="{{$board->description}}">
-            <br>
-            <button type="submit">Update</button>
-        </form>
-
+                    @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    
+                    <div class="component_margin">
+                        <label for="description">Description : </label>
+                        <input type='textarea' name='description' id="description" value="{{$board->description}}">
+                    </div>
+                    <button type="submit" class="component_margin button_create">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
     @if ($errors->any())
     <div class="alert alert-danger">
