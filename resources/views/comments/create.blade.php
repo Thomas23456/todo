@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="link_page2">Revenir aux commentaires <a href="{{route('comments.index', [$board, $task])}}">Commentaires</a></div>
+    <div class="link_page">Revenir aux<a href="{{route('comments.index', [$board, $task])}}">Commentaires</a></div>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

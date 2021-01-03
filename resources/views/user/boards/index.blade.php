@@ -14,8 +14,7 @@
     @else
     <div>
         <div class="titre_boards">Tous les boards s'affichent ici</div>
-        <div class="link_page">Cliquez ici pour créer un board <a href="{{route('boards.create')}}">Nouveau</a></div>
-        <div class="link_page">Cliquez ici pour revenir au dashboard <a href="{{route('dashboard')}}">Dashboard</a></div>
+        <div class="link_page">Revenir au<a href="{{route('dashboard')}}">Dashboard</a></div>
     </div>
     <div class="contain_table"><table class="table_boards">
         <tr>
@@ -36,7 +35,7 @@
             </td>
             <td>
                 @can('update', $board)
-                <div class="contain_link_table"><a href="{{route('boards.edit', $board)}}">Editer</a></div>
+                <div class="contain_link_table2"><a href="{{route('boards.edit', $board)}}">Editer</a></div>
                 @endcan
             </td>
             <td>
@@ -51,5 +50,6 @@
         </tr>
         @endforeach
     </table></div>
+    <div class="link_page">Ajouter<a href="{{route('boards.create')}}">Nouveau Board</a></div>
     @endif
 @endsection

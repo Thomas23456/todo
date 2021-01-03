@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="link_page">Revenir aux boards <a href="{{route('boards.index')}}">Boards</a></div>
+    <div class="link_page">Revenir aux<a href="{{route('boards.index')}}">Boards</a></div>
 
     @if ($errors->any())
     <div class="alert alert-danger">

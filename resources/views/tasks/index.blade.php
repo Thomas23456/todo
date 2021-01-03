@@ -14,8 +14,7 @@
     @else
         <div>
             <div class="titre_boards">{{$board->title}}</div>
-            <div class="link_page">Cliquez ici pour créer une tâche <a href="{{route('tasks.create', $board)}}">Nouvelle</a></div>
-            <div class="link_page">Cliquez ici pour revenir aux boards <a href="{{route('boards.index')}}">Boards</a></div>
+            <div class="link_page">Revenir aux<a href="{{route('boards.index')}}">Boards</a></div>
         </div>
         <div class="contain_table"><table class="table_boards">
         <tr>
@@ -34,7 +33,7 @@
                 <div class="contain_link_table"><a href="{{route('tasks.show', [$board, $task])}}">Détails</a></div>
             </td>
             <td>
-                <div class="contain_link_table"><a href="{{route('tasks.edit', [$board, $task])}}">Editer</a></div>
+                <div class="contain_link_table2"><a href="{{route('tasks.edit', [$board, $task])}}">Editer</a></div>
             </td>
             <td>
                 <form action="{{route('tasks.destroy', [$board, $task])}}" method='POST' class="contain_link_table">
@@ -46,5 +45,6 @@
         </tr>
         @endforeach
     </table></div>
+    <div class="link_page">Ajouter<a href="{{route('tasks.create', $board)}}">Nouvelle tâche</a></div>
     @endif
 @endsection

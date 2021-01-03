@@ -18,6 +18,6 @@
             </form> --}}
         @endforeach
     </div>
-    <div class="link_page2">Cliquez ici pour accéder aux commentaires <a href="{{route('comments.index', [$board, $task])}}">Commentaires</a></div>
-    <div class="link_page2">Revenir aux tâches <a href="{{route('tasks.index', $board)}}">Tâches</a></div>
+    <div class="link_page2">Accéder aux<a href="{{route('comments.index', [$board, $task])}}">Commentaires</a></div>
+    <div class="link_page2">Revenir aux<a href="{{route('tasks.index', $board)}}">Tâches</a></div>
 @endsection

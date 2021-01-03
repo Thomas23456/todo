@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="link_page2">Revenir aux tâches <a href="{{route('tasks.index', $board)}}">Tâches</a></div>
+    <div class="link_page">Revenir aux<a href="{{route('tasks.index', $board)}}">Tâches</a></div>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

@@ -42,6 +42,6 @@
             <button type="submit" class="add_button">Ajouter</button>
         </form>
     </div>
-    <div class="link_page2">Cliquez ici pour accéder aux tâches <a href="{{route('tasks.index', $board)}}">Tâches</a></div>
-    <div class="link_page2">Revenir aux boards <a href="{{route('boards.index')}}">Boards</a></div>
+    <div class="link_page2">Accéder aux<a href="{{route('tasks.index', $board)}}">Tâches</a></div>
+    <div class="link_page2">Revenir aux<a href="{{route('boards.index')}}">Boards</a></div>
 @endsection

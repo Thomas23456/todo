@@ -14,8 +14,7 @@
     @else
         <div>
             <div class="titre_boards">{{$board->title}} - {{$task->title}}</div>
-            <div class="link_page">Cliquez ici pour créer un commentaire <a href="{{route('comments.create', [$board, $task])}}">Nouveau</a></div>
-            <div class="link_page">Cliquez ici pour revenir aux tâches <a href="{{route('tasks.index', $board)}}">Tasks</a></div>
+            <div class="link_page">Revenir aux<a href="{{route('tasks.index', $board)}}">Tâches</a></div>
         </div>
         <div class="contain_table"><table class="table_boards">
         <tr>
@@ -34,7 +33,7 @@
                 <div class="contain_link_table"><a href="{{route('comments.show', [$board, $task, $comment])}}">Détails</a></div>
             </td>
             <td>
-                <div class="contain_link_table"><a href="{{route('comments.edit', [$board, $task, $comment])}}">Editer</a></div>
+                <div class="contain_link_table2"><a href="{{route('comments.edit', [$board, $task, $comment])}}">Editer</a></div>
             </td>
             <td>
                 <form action="{{route('comments.destroy', [$board, $task, $comment])}}" method='POST' class="contain_link_table">
@@ -46,5 +45,6 @@
         </tr>
         @endforeach
     </table></div>
+    <div class="link_page">Ajouter<a href="{{route('comments.create', [$board, $task])}}">Nouveau commentaire</a></div>
     @endif
 @endsection
