@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Classe pivot qui met en relation les boards et les utilisateurs
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class BoardUser extends Pivot
 {
     use HasFactory;

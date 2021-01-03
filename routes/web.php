@@ -18,14 +18,15 @@ use App\Models\Board;
 |
 */
 
+//route pour la racine de l'appli
 Route::get('/', function () {
     return view('welcome');
 });
 
+//route pour accéder au dashboard une fois authentifié
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
 
 // Route::get('/boards', [BoardController::class, 'index'])->middleware('auth')->name('boards.index');
 // Route::get('/boards/create', [BoardController::class, 'create'])->middleware('auth')->name('boards.create');
@@ -35,12 +36,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Route::put('/boards/{board}', [BoardController::class, 'update'])->middleware('auth')->name('boards.update');
 // Route::delete('/boards/{board}', [BoardController::class, 'destroy'])->middleware('auth')->name('boards.destroy');
 
+// Route::get('boards/{board}/tasks/create', [TaskController::class, 'createFromBoard'])->middleware('auth')->name('boards.tasks.create');
+// Route::post('boards/{board}/tasks', [TaskController::class, 'storeFromBoard'])->middleware('auth')->name('boards.tasks.store');
+
+//routes pour les boards, tâches et commentaires
 Route::resource('boards', BoardController::class)->middleware('auth');
 Route::resource('boards/{board}/tasks', TaskController::class)->middleware('auth');
 Route::resource('boards/{board}/tasks/{task}/comments', CommentController::class)->middleware('auth');
 
-// Route::get('boards/{board}/tasks/create', [TaskController::class, 'createFromBoard'])->middleware('auth')->name('boards.tasks.create');
-// Route::post('boards/{board}/tasks', [TaskController::class, 'storeFromBoard'])->middleware('auth')->name('boards.tasks.store');
-
+//routes pour les boarduser
 Route::post('boards/{board}/boarduser', [BoardUserController::class ,  'store'])->middleware('auth')->name('boards.boarduser.store');
 Route::delete('boarduser/{BoardUser}', [BoardUserController::class ,  'destroy'])->middleware('auth')->name('boards.boarduser.destroy');;

@@ -10,6 +10,7 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \App\Models\Board  $board
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
@@ -21,6 +22,7 @@ class CommentController extends Controller
     /**
      * Show the form for creating a new resource.
      * 
+     * @param Board $board le board à partir duquel on créer la tâche
      * @param Task $task le task à partir duquel on crée le commentaire
      * @return \Illuminate\Http\Response
      */
@@ -33,6 +35,7 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param Board $board le board à partir duquel on créer la tâche
      * @param Task $task le task à partir duquel on crée le commentaire
      * @return \Illuminate\Http\Response
      */

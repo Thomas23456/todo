@@ -9,7 +9,7 @@ use App\Models\{Task, User};
 /**
  * Classe pivot qui met en relation les tâches et les utilisateurs
  * 
- * @author Nicolas Faessel <nicolas.faessel@ynov.com>
+ * @author Thomas Payan <thomas.payan@ynov.com>
  * 
  */
 class TaskUser extends Pivot

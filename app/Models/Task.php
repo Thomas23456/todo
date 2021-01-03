@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Le modèle Task qui est lié à la table tasks dans la base de données
  * 
- * @author Nicolas Faessel <nicolas.faessel@ynov.com>
+ * @author Thomas Payan <thomas.payan@ynov.com>
  * 
  */
 class Task extends Model

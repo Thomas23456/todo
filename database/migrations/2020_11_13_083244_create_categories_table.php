@@ -4,6 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateCategoriesTable qui permet de créer les catégories
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class CreateCategoriesTable extends Migration
 {
     /**

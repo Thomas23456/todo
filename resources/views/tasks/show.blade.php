@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <div class="titre_boards">{{$task->title}}</div>
+    <div class="titre_boards">{{$board->title}} - {{$task->title}}</div>
     <div class="descript_board">Description : {{$task->description}}
     <p>À finir avant le  : {{$task->due_date}}</p>
     <p>Status :  {{$task->state}}</p></div>

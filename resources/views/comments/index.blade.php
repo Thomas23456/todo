@@ -13,7 +13,7 @@
         <div class="link_page">Cliquez ici pour créer un commentaire <a href="{{route('comments.create', [$board, $task])}}">Nouveau</a></div>
     @else
         <div>
-            <div class="titre_boards">{{$task->title}}</div>
+            <div class="titre_boards">{{$board->title}} - {{$task->title}}</div>
             <div class="link_page">Cliquez ici pour créer un commentaire <a href="{{route('comments.create', [$board, $task])}}">Nouveau</a></div>
             <div class="link_page">Cliquez ici pour revenir aux tâches <a href="{{route('tasks.index', $board)}}">Tasks</a></div>
         </div>

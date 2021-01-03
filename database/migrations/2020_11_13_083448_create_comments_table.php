@@ -4,6 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreateTasksTable qui permet de créer les commentaires
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class CreateCommentsTable extends Migration
 {
     /**

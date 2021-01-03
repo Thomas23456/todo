@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
 /**
- * Représente un fichier attachée à une tâche par un utilisateur
+ * Représente un fichier attaché à une tâche par un utilisateur
  * 
- * @author Nicolas Faessel <nicolas.faessel@ynov.com>
+ * @author Thomas Payan <thomas.payan@ynov.com>
  * 
  */
 class Attachment extends Model

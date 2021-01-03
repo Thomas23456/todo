@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Représente un fichier attaché à un board par un utilisateur
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class Board extends Model
 {
     use HasFactory;

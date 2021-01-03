@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <div class="titre_boards">{{$task->title}}</div>
+    <div class="titre_boards">{{$board->title}} - {{$task->title}} - Commentaire</div>
     <div class="descript_board">Texte : {{$comment->text}}</div>
     <div class="participants">
         @foreach($task->assignedUsers as $user) 

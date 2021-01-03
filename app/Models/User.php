@@ -10,6 +10,12 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Représente un fichier attaché à un utilisateur
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;

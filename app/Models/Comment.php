@@ -9,7 +9,7 @@ use App\Models\User;
 /**
  * Représente un commentaire rédigé sur une tâche par un utilisateur
  * 
- * @author Nicolas Faessel <nicolas.faessel@ynov.com>
+ * @author Thomas Payan <thomas.payan@ynov.com>
  * 
  */
 class Comment extends Model
