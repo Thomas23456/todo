@@ -5,11 +5,12 @@
 
 @section('content')
     <div class="titre_boards">{{$board->title}}</div>
+    <div class="descript_board">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}</div>
     <div class="descript_board">Description : {{$board->description}}</div>
     <div class="participants">
         <table class="table_show">
             <tr>
-                <td class="titre_column">Participant de la board</td>
+                <td class="titre_column">Participant du board</td>
                 <td class="titre_column">Supprimer le participant</td>
             </tr>
             @foreach($board->users as $user) 

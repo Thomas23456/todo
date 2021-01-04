@@ -10,7 +10,7 @@
                 <img src="{{ asset('img/warning.png') }}" alt="image warning"/>Oups ! Vous n'avez aucun com
             </div>
         </div>
-        <div class="link_page">Cliquez ici pour créer un commentaire <a href="{{route('comments.create', [$board, $task])}}">Nouveau</a></div>
+        <div class="link_page">Ajouter<a href="{{route('comments.create', [$board, $task])}}">Nouveau Commentaire</a></div>
     @else
         <div>
             <div class="titre_boards">{{$board->title}} - {{$task->title}}</div>
@@ -45,6 +45,6 @@
         </tr>
         @endforeach
     </table></div>
-    <div class="link_page">Ajouter<a href="{{route('comments.create', [$board, $task])}}">Nouveau commentaire</a></div>
+    <div class="link_page">Ajouter<a href="{{route('comments.create', [$board, $task])}}">Nouveau Commentaire</a></div>
     @endif
 @endsection

@@ -33,6 +33,7 @@
                     </div>
 
                     <div class="component_margin">
+                        <label for="category">Catégorie : </label>
                         <select name="category_id" id="category_id">
                             @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>

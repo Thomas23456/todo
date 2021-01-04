@@ -33,6 +33,7 @@
                     </div>
                     
                     <div class="component_margin">
+                        <label for="category">Catégorie : </label>
                         <select name="category_id" id="category_id" value="{{$task->category_id}}">
                             @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -44,6 +45,7 @@
                     @enderror
                     
                     <div class="component_margin">
+                        <label for="state">Etat : </label>
                         <select name="state" id="state" value="{{$task->state}}">
                             @foreach (['todo', 'ongoing', 'done'] as $state)
                             <option value="{{$state}}">{{$state}}</option>

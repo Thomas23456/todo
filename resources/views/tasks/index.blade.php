@@ -10,7 +10,7 @@
                 <img src="{{ asset('img/warning.png') }}" alt="image warning"/>Oups ! Vous n'avez aucune tâche
             </div>
         </div>
-        <div class="link_page">Cliquez ici pour créer une tâche <a href="{{route('tasks.create', $board)}}">Nouvelle</a></div>
+        <div class="link_page">Ajouter<a href="{{route('tasks.create', $board)}}">Nouvelle Tâche</a></div>
     @else
         <div>
             <div class="titre_boards">{{$board->title}}</div>
@@ -45,6 +45,6 @@
         </tr>
         @endforeach
     </table></div>
-    <div class="link_page">Ajouter<a href="{{route('tasks.create', $board)}}">Nouvelle tâche</a></div>
+    <div class="link_page">Ajouter<a href="{{route('tasks.create', $board)}}">Nouvelle Tâche</a></div>
     @endif
 @endsection

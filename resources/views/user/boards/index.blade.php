@@ -10,7 +10,7 @@
                 <img src="{{ asset('img/warning.png') }}" alt="image warning"/>Oups ! Vous n'avez aucun board
             </div>
         </div>
-        <div class="link_page">Cliquez ici pour créer un board <a href="{{route('boards.create')}}">Nouveau</a></div>
+        <div class="link_page">Ajouter<a href="{{route('boards.create')}}">Nouveau Board</a></div>
     @else
     <div>
         <div class="titre_boards">Tous les boards s'affichent ici</div>
