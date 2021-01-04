@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\{BoardUser, Board};
+use App\Models\{TaskUser, Task};
 
-class BoardUserController extends Controller
+class TaskUserController extends Controller
 {
     //
 
@@ -17,11 +17,11 @@ class BoardUserController extends Controller
      * @param Board $board le board dans lequel on souhaite ajouter un utilisateur
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Board $board){
+    public function store(Request $request, Board $board, Task $task){
         $validatedData = $request->validate([
             'user_id' => 'required|integer|exists:users,id'
         ]);
-        $board_user = new BoardUser(); 
+        $board_user = new TaskUser(); 
         $board_user->user_id = $validatedData['user_id']; 
         $board_user->board_id = $board->id; 
         $board_user->save(); 
@@ -31,10 +31,10 @@ class BoardUserController extends Controller
         /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BoardUser  $boardUser l'instance à supprimer
+     * @param  \App\Models\TaskUser  $boardUser l'instance à supprimer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BoardUser $boardUser)
+    public function destroy(TaskUser $taskUser)
     {
         //TODO : correct bug
         //$board = $boardUser->board;

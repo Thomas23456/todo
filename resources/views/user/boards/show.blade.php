@@ -15,9 +15,9 @@
             </tr>
             @foreach($board->users as $user) 
             <tr>
-                <td>{{$user->name}}</td>
+                <td>{{$user->name}} : {{$user->email}}</td>
                 <td>
-                    <form action="{{route('boards.boarduser.destroy', $user->pivot)}}" method="POST" class="contain_link_table">
+                    <form action="{{route('boards.boarduser.destroy', $user->pivot->id)}}" method="POST" class="contain_link_table">
                         @csrf
                         @method("DELETE")
                         <button type="submit">Supprimer</button>

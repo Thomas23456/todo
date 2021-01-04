@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Category,Task, Board};
+use App\Models\{Category,Task, Board,TaskUser, User, BoardUser};
 use Database\Factories\CategoryFactory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -48,7 +49,8 @@ class TaskController extends Controller
         ]);
         // TODO :  Il faut vérifier que le board auquel appartient la tâche appartient aussi à l'utilisateur qui fait cet ajout. 
         $validatedData['board_id'] = $board->id; 
-        Task::create($validatedData); 
+        Task::create($validatedData);
+        
         return redirect()->route('tasks.index', [$board]);
 
     }

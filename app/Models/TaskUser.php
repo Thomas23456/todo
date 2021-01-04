@@ -26,6 +26,7 @@ class TaskUser extends Pivot
      */
     public $incrementing = true;
 
+    protected $primaryKey = "id";
 
     /**
      * The "booted" method of the model.
