@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BoardController;
-use App\Http\Controllers\BoardUserController;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\{BoardController, BoardUserController, TaskController, TaskUserController, CommentController};
 use App\Models\Board;
 
 /*

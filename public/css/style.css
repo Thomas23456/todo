@@ -213,7 +213,7 @@
     margin-right: 20px;
 }
 
-#user_id{
+#user_id, #participant_id{
     height: 30px;
 }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\{TaskUser, Task};
+use App\Models\{TaskUser, Task, Board};
 
 class TaskUserController extends Controller
 {
@@ -14,18 +14,19 @@ class TaskUserController extends Controller
      * Store a newly created resource in storage for a given board (in uri param).
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param Board $board le board dans lequel on souhaite ajouter un utilisateur
+     * @param Board $board le board rattaché à l'utilisateur
+     * @param Task $task la tâche dans laquelle on souhaite ajouter un utilisateur
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Board $board, Task $task){
         $validatedData = $request->validate([
-            'user_id' => 'required|integer|exists:users,id'
+            'participant_id' => 'required|integer|exists:users,id'
         ]);
-        $board_user = new TaskUser(); 
-        $board_user->user_id = $validatedData['user_id']; 
-        $board_user->board_id = $board->id; 
-        $board_user->save(); 
-        return redirect()->route('boards.show', $board);
+        $task_user = new TaskUser(); 
+        $task_user->user_id = $validatedData['participant_id']; 
+        $task_user->task_id = $task->id; 
+        $task_user->save(); 
+        return redirect()->route('tasks.show', [$board, $task]);
     }
 
         /**

@@ -64,8 +64,7 @@ class TaskController extends Controller
      */
     public function show(Board $board, Task $task)
     {
-        $category = Category::where('id', $task->category_id)->first();
-        return view('tasks.show', ['board' => $board, 'task' => $task, 'category' => $category]);
+        return view('tasks.show', ['board' => $board, 'task' => $task]);
     }
 
     /**
