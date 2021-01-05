@@ -50,6 +50,8 @@
         </tr>
         @endforeach
     </table></div>
-    <div class="link_page">Ajouter<a href="{{route('boards.create')}}">Nouveau Board</a></div>
+        @can('create', $board)
+            <div class="link_page">Ajouter<a href="{{route('boards.create')}}">Nouveau Board</a></div>
+        @endcan
     @endif
 @endsection

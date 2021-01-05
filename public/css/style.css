@@ -175,10 +175,6 @@
     cursor: pointer;
 }
 
-/* VIEW EDIT USER */
-
-
-
 /* VIEW SHOW USER */
 
 .descript_board{
@@ -227,6 +223,31 @@
 }
 
 .add_button:hover{
+    cursor: pointer;
+}
+
+.owner_form{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.contain_owner_form{
+    margin: 0 0 0 20px;
+}
+
+.contain_owner_form > button{
+    width: 75px;
+    height: 30px;
+    font-size: .8em;
+    border: solid 2px black;
+    background: orange;
+    color: white;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.contain_owner_form > button:hover{
     cursor: pointer;
 }
 

@@ -5,7 +5,15 @@
 
 @section('content')
     <div class="titre_boards">{{$board->title}}</div>
-    <div class="descript_board">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}</div>
+    <div class="descript_board owner_form">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}
+        @if($board->owner->id === $owner->id)
+            <form action="{{route('boards.show', $owner->id)}}" method="POST" class="contain_owner_form">
+                @csrf
+                @method('PUT')
+                <button type="submit">Editer</button>
+            </form>
+        @endif
+    </div>
     <div class="descript_board">Description : {{$board->description}}</div>
     <div class="participants">
         <table class="table_show">
@@ -19,7 +27,7 @@
                 <td>
                     <form action="{{route('boards.boarduser.destroy', $user->pivot->id)}}" method="POST" class="contain_link_table">
                         @csrf
-                        @method("DELETE")
+                        @method('DELETE')
                         <button type="submit">Supprimer</button>
                     </form>
                 </td>

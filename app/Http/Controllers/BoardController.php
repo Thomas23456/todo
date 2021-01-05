@@ -45,7 +45,6 @@ class BoardController extends Controller
      */
     public function create()
     {
-        // $this->authorize('create', Board::class);
         // renvoi le formulaire de création d'un board
         return view('user.boards.create');
     }
@@ -58,8 +57,6 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $this->authorize('create', Board::class);
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'max:4096',
@@ -68,10 +65,8 @@ class BoardController extends Controller
         $board->user_id = Auth::user()->id; 
         $board->title = $validatedData['title']; 
         $board->description = $validatedData['description']; 
-
-        
-        
         $board->save();
+
         return redirect()->route('boards.index');
     }
 
@@ -83,18 +78,13 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
-
-
-        // $this->authorize('view', $board);
-
-
         //Ici on doit on doit maintenant fournir la liste des utilisateurs qui ne sont pas dans le board pour pouvoir les inviter
         // D'abord on récupère les ids des users du board : 
         $boardUsersId = $board->users->pluck('id'); 
         
         // On sélectionne maintenant tous les utilisateurs dont l'id n'appartient pas à la liste des ids des utilisateurs du board
         $usersNotInBoard = User::whereNotIn('id', $boardUsersId)->get(); 
-        return view("user.boards.show", ["board" => $board, 'users' => $usersNotInBoard]);
+        return view("user.boards.show", ['board' => $board, 'users' => $usersNotInBoard, 'owner' => Auth::user()]);
     }
 
     /**

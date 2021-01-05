@@ -64,7 +64,7 @@ class TaskController extends Controller
      */
     public function show(Board $board, Task $task)
     {
-        return view('tasks.show', ['board' => $board, 'task' => $task]);
+        return view('tasks.show', ['board' => $board, 'task' => $task, 'owner' => Auth::user()]);
     }
 
     /**

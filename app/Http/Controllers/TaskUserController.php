@@ -32,20 +32,14 @@ class TaskUserController extends Controller
         /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TaskUser  $boardUser l'instance à supprimer
+     * @param  \App\Models\TaskUser  $taskUser l'instance à supprimer
      * @return \Illuminate\Http\Response
      */
     public function destroy(TaskUser $taskUser)
     {
-        //TODO : correct bug
-        //$board = $boardUser->board;
-        $board = 60; 
-        //BoardUser::where('id', $boardUser->pivot->id)->delete();
-        //$boardUser->detach();
-        //$boardDelete = BoardUser::find($boardUser);
-        //$boardDelete->delete();
-        //$boardUser->delete(); 
-        return redirect()->route('boards.show', $board);
+        $taskUser->delete();
+        $task = $taskUser->task;
+        $board = $task->board;
+        return redirect()->route('tasks.show', [$board, $task]);
     }
-
 }

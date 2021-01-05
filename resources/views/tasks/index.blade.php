@@ -30,21 +30,29 @@
                 "{{ $task->title }}" 
             </td>
             <td>
-                <div class="contain_link_table"><a href="{{route('tasks.show', [$board, $task])}}">Détails</a></div>
+                @can('view', $board)
+                    <div class="contain_link_table"><a href="{{route('tasks.show', [$board, $task])}}">Détails</a></div>
+                @endcan
             </td>
             <td>
-                <div class="contain_link_table2"><a href="{{route('tasks.edit', [$board, $task])}}">Editer</a></div>
+                @can('update', $task)
+                    <div class="contain_link_table2"><a href="{{route('tasks.edit', [$board, $task])}}">Editer</a></div>
+                @endcan
             </td>
             <td>
-                <form action="{{route('tasks.destroy', [$board, $task])}}" method='POST' class="contain_link_table">
+                @can('delete', $board)
+                    <form action="{{route('tasks.destroy', [$board, $task])}}" method='POST' class="contain_link_table">
                         @method('DELETE')
                         @csrf
                         <button type="submit">Supprimer</button>
-                </form>
+                    </form>
+                @endcan
             </td>
         </tr>
         @endforeach
     </table></div>
-    <div class="link_page">Ajouter<a href="{{route('tasks.create', $board)}}">Nouvelle Tâche</a></div>
+        @can('create', $board)
+            <div class="link_page">Ajouter<a href="{{route('tasks.create', $board)}}">Nouvelle Tâche</a></div>
+        @endcan
     @endif
 @endsection

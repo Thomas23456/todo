@@ -1,4 +1,4 @@
-# Cas d'utilisations
+﻿# Cas d'utilisations
 
 ## En tant qu'utilisateur non connecté, je peux : 
     - accéder à la page d'accueil
@@ -18,7 +18,7 @@
     - faire à minima toutes les actions que peuvent faire les participants des tâches de mon board
     - supprimer le board
     - supprimer un commentaire des tâches de mon board
-    - supprimer une pièce jointe des tâches de mon board
+    - supprimer une pièce jointe des tâches de mon board 
     - Faire toutes les actions d'un participant du board ou d'un utilisateur assigné à une tâche
   
 ## En tant que participant d'un board (invité par son propriétaire), je peux

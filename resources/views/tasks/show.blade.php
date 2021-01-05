@@ -5,7 +5,15 @@
 
 @section('content')
     <div class="titre_boards">{{$board->title}} - {{$task->title}}</div>
-    <div class="descript_board">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}</div>
+    <div class="descript_board owner_form">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}
+        @if($board->owner->id === $owner->id)
+            <form action="{{route('boards.show', $owner->id)}}" method="POST" class="contain_owner_form">
+                @csrf
+                @method('PUT')
+                <button type="submit">Editer</button>
+            </form>
+        @endif
+    </div>
     <div class="descript_board">Description : {{$task->description}}
     <p>À finir avant le  : {{$task->due_date}}</p>
     <p>Status :  {{$task->state}}</p>

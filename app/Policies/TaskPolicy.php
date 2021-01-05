@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\{Board, User};
+use App\Models\{Task, User, Board};
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
-class BoardPolicy
+class TaskPolicy
 {
     use HandlesAuthorization;
 
@@ -57,10 +57,13 @@ class BoardPolicy
      * @param  \App\Models\Board  $board
      * @return mixed
      */
-    public function update(User $user, Board $board)
+    public function update(User $user, Task $task)
     {
-        //
-        return $user->id ===  $board->user_id; //$board->owner->id;
+        // La règle est qu'un utilisateur doit être participant du board pour pouvoir modifier la tâche
+        return $task                          // La board que l'utilisateur veut voir
+                    ->assignedUsers           // les utilisateurs qui participent à la board reliés à la tâche
+                    ->find(Auth::user()->id)  // On cherche dans les participants l'utilisateur qui effectue l'action (on aurait pu faire : ->where('id', '=', $user->id))
+                    !== null;                 // Si on obtient un résultat différent de null, c'est que l'on y a trouvé l'utilisateur
     }
 
     /**

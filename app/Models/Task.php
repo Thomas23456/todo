@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\{Board};
 
 /**
  * Le modèle Task qui est lié à la table tasks dans la base de données
@@ -105,6 +106,4 @@ class Task extends Model
     {
         return $this->hasMany('App\Models\Attachment');
     }
-
-
 }

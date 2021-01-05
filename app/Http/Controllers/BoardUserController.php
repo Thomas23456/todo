@@ -28,7 +28,7 @@ class BoardUserController extends Controller
         return redirect()->route('boards.show', $board);
     }
 
-        /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\BoardUser  $boardUser l'instance à supprimer
@@ -36,15 +36,8 @@ class BoardUserController extends Controller
      */
     public function destroy(BoardUser $boardUser)
     {
-        //TODO : correct bug
-        //$board = $boardUser->board;
-        $board = 60; 
-        //BoardUser::where('id', $boardUser->pivot->id)->delete();
-        //$boardUser->detach();
-        //$boardDelete = BoardUser::find($boardUser);
-        //$boardDelete->delete();
-        //$boardUser->delete(); 
+        $boardUser->delete();
+        $board = $boardUser->board;
         return redirect()->route('boards.show', $board);
     }
-
 }
