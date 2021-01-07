@@ -32,11 +32,25 @@ class Task extends Model
     }*/
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = ['due_date' => 'datetime'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['title', 'description', 'due_date', 'category_id', 'board_id', 'state'];
+    public $fillable = ["title", 'description','state','due_date','user_id'];
+    
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'tasks';
 
 
     /**
@@ -74,7 +88,6 @@ class Task extends Model
                     ->withTimestamps();
     }
 
-    
 
     /**
      * Renvoie la liste des utilisateurs du board auquel appartient la tâche (hormis le propriétaire ?)
@@ -86,6 +99,7 @@ class Task extends Model
         return $this->hasManyThrough(User::class, BoardUser::class, "board_id", 'id', 'board_id', 'user_id');    
     }
 
+
     /**
      * Renvoie la liste des commentaires associés à la tâche
      *
@@ -96,6 +110,7 @@ class Task extends Model
         return $this->hasMany('App\Models\Comment');
     }
 
+    
     /**
      * Renvoie la liste des pièces jointes associées à la tâche
      *

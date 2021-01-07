@@ -7,6 +7,12 @@ use Database\Factories\CategoryFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Classe TaskController qui permet de gérer les vues de la table des tâches
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class TaskController extends Controller
 {
     /**
@@ -17,6 +23,7 @@ class TaskController extends Controller
      */
     public function index(Board $board)
     {
+        //retourne la page des tâches
         return view('tasks.index', ['board' => $board]);
     }
 
@@ -28,6 +35,7 @@ class TaskController extends Controller
      */
     public function create(Board $board)
     {
+        //retourne le formulaire de création des tâches
         $categories = Category::all(); 
         return view('tasks.create', ['categories' => $categories, 'board' => $board]); 
     }
@@ -41,18 +49,25 @@ class TaskController extends Controller
      */
     public function store(Request $request, Board $board)
     {
+        //on vérifie les données du formulaire avant de créer la tâche
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:4096',
             'due_date' => 'date|after_or_equal:tomorrow',
-            'category_id' => 'nullable|integer|exists:categories,id', 
+            'category_id' => 'nullable|integer|exists:categories,id',
+            'state'=>'required|in:todo,ongoing,done',
         ]);
-        // TODO :  Il faut vérifier que le board auquel appartient la tâche appartient aussi à l'utilisateur qui fait cet ajout. 
-        $validatedData['board_id'] = $board->id; 
-        Task::create($validatedData);
-        
-        return redirect()->route('tasks.index', [$board]);
 
+        $task= new Task();
+        $task->title = $validatedData["title"];
+        $task->description = $validatedData["description"];
+        $task->due_date = $validatedData["due_date"];
+        $task->category_id = $validatedData["category_id"];
+        $task->state = $validatedData["state"];
+        $task->board_id = $board->id;
+        $task->save();
+
+        return redirect()->route('tasks.index', [$board]);
     }
 
     /**
@@ -64,6 +79,7 @@ class TaskController extends Controller
      */
     public function show(Board $board, Task $task)
     {
+        //retourne le détail de la tâche
         return view('tasks.show', ['board' => $board, 'task' => $task, 'owner' => Auth::user()]);
     }
 
@@ -76,7 +92,7 @@ class TaskController extends Controller
      */
     public function edit(Board $board, Task $task)
     {
-        //
+        //retourne le formulaire pour modifier la tâche
         return view('tasks.edit', ['board' => $board, 'task' => $task, 'categories' => Category::all(), 'user' => Auth::user()]);
     }
 
@@ -90,7 +106,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Board $board, Task $task)
     {
-        //
+        //on vérifie les données du formulaire avant de mettre à jour la tâche
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:4096',
@@ -98,7 +114,6 @@ class TaskController extends Controller
             'category_id' => 'nullable|integer|exists:categories,id', 
             'state' => 'in:todo,ongoing,done'
         ]);
-        // TODO :  Il faut vérifier que le board auquel appartient la tâche appartient aussi à l'utilisateur qui fait cet ajout. 
         
         $task->update($validatedData); 
         return redirect()->route('tasks.index', [$board]);
@@ -113,6 +128,7 @@ class TaskController extends Controller
      */
     public function destroy(Board $board, Task $task)
     {
+        //on supprime la tâche
         $task->delete(); 
         return redirect()->route('tasks.index', [$board]);
     }

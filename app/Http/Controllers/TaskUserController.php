@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\{TaskUser, Task, Board};
 
+/**
+ * Classe TaskUserController qui permet de gérer les vues de la table pivots TaskUser
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class TaskUserController extends Controller
 {
-    //
 
     /**
      * Store a newly created resource in storage for a given board (in uri param).
@@ -18,7 +22,9 @@ class TaskUserController extends Controller
      * @param Task $task la tâche dans laquelle on souhaite ajouter un utilisateur
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Board $board, Task $task){
+    public function store(Request $request, Board $board, Task $task)
+    {
+        //on vérifie les données du formulaire avant de créer le task_user
         $validatedData = $request->validate([
             'participant_id' => 'required|integer|exists:users,id'
         ]);
@@ -26,6 +32,7 @@ class TaskUserController extends Controller
         $task_user->user_id = $validatedData['participant_id']; 
         $task_user->task_id = $task->id; 
         $task_user->save(); 
+
         return redirect()->route('tasks.show', [$board, $task]);
     }
 
@@ -37,6 +44,7 @@ class TaskUserController extends Controller
      */
     public function destroy(TaskUser $taskUser)
     {
+        //on supprime le task_user
         $taskUser->delete();
         $task = $taskUser->task;
         $board = $task->board;

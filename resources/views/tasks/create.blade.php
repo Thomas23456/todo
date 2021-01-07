@@ -43,6 +43,8 @@
                     @error('category')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+
+                    <input type='text' name='state' id="state" value="todo" class="hidden_input"/>
                     
                     <button type="submit" class="component_margin button_create">Créer</button>
                 </form>

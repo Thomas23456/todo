@@ -32,7 +32,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Route::get('/boards/{board}/edit', [BoardController::class, 'edit'])->middleware('auth')->name('boards.edit');
 // Route::put('/boards/{board}', [BoardController::class, 'update'])->middleware('auth')->name('boards.update');
 // Route::delete('/boards/{board}', [BoardController::class, 'destroy'])->middleware('auth')->name('boards.destroy');
-
 // Route::get('boards/{board}/tasks/create', [TaskController::class, 'createFromBoard'])->middleware('auth')->name('boards.tasks.create');
 // Route::post('boards/{board}/tasks', [TaskController::class, 'storeFromBoard'])->middleware('auth')->name('boards.tasks.store');
 

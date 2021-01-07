@@ -4,6 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration AddTwoFactorColumnsToUsersTable qui permet d'ajouter des colonnes à la table des utilisateurs
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class AddTwoFactorColumnsToUsersTable extends Migration
 {
     /**

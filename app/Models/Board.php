@@ -44,6 +44,7 @@ class Board extends Model
      */
     protected $table = 'boards';
 
+
     /**
      * Renvoie l'utilisateur propriétaire du board (celui qui l'a créé)
      *
@@ -57,6 +58,7 @@ class Board extends Model
 
     /**
      * Renvoie tous les utilisateurs qui sont associés au board, c'est à dire les participants
+     * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function users()
@@ -67,8 +69,12 @@ class Board extends Model
                     ->withTimestamps();
     }
 
+    /**
+     * Renvoie toutes les tâches associées au board
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function tasks() {
         return $this->hasMany(Task::class);
     }
-
 }

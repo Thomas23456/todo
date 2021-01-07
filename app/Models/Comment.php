@@ -21,7 +21,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['text', 'task_id'];
+    protected $fillable = ['text', 'user_id', 'task_id'];
 
     /**
      * Renvoi l'utilisateur qui a écrit le commentaire

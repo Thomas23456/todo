@@ -6,6 +6,12 @@ use App\Models\{Task, User, Board, Comment};
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Policy CommentPolicy qui permet de gérer les actions sur les commentaires
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class CommentPolicy
 {
     use HandlesAuthorization;
@@ -18,7 +24,7 @@ class CommentPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        //La règle est que l'utilisateur connecté peut voir les modèles
         return Auth::user()->id == $user->id; 
     }
 

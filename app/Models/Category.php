@@ -17,6 +17,21 @@ class Category extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public $fillable = ["name"];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'categories';
+
+
+    /**
      * Renvoi la liste des tâches possédant cette catégorie
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

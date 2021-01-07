@@ -18,7 +18,7 @@ class TaskPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        //La règle est que l'utilisateur connecté peut voir les modèles
         return Auth::user()->id == $user->id; 
     }
 
@@ -31,7 +31,7 @@ class TaskPolicy
      */
     public function view(User $user, Board $board)
     {
-        // La règle est qu'un utilisateur doit être participant du board pour le voir
+        // La règle est qu'un utilisateur doit être participant du board pour voir le voir
         return $board                   // La board que l'utilisateur veut voir
                     ->users             // les utilisateurs qui participent à la board
                     ->find($user->id)   // On cherche dans les participants l'utilisateur qui effectue l'action (on aurait pu faire : ->where('id', '=', $user->id))
@@ -46,7 +46,7 @@ class TaskPolicy
      */
     public function create(User $user)
     {
-        //
+        // La règle est que les participants du board peuvent modifier la tâche
         return Auth::user()->id === $user->id; 
     }
 
@@ -75,6 +75,7 @@ class TaskPolicy
      */
     public function delete(User $user, Board $board)
     {
+        // La règle est que seul le propriétaire du board peut supprimer la tâche
         return $user->id ===  $board->user_id; //$board->owner->id;
     }
 

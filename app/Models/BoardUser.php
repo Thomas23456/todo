@@ -59,6 +59,7 @@ class BoardUser extends Pivot
         return $this->belongsTo(Board::class);
     }
 
+
     /**
      * Permet de récupérer toutes les tâches de la board. 
      * Servira de lien pour récupérer les tâches d'un utilisateur
@@ -68,5 +69,4 @@ class BoardUser extends Pivot
     public function tasks() {
         return $this->hasManyThrough(Task::class, Board::class, 'id', 'board_id', 'board_id');
     }
-
 }

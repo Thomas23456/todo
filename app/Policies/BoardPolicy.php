@@ -6,6 +6,12 @@ use App\Models\{Board, User};
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Policy BoardPolicy qui permet de gérer les actions sur les boards
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class BoardPolicy
 {
     use HandlesAuthorization;
@@ -18,7 +24,7 @@ class BoardPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        //La règle est que l'utilisateur connecté peut voir les modèles
         return Auth::user()->id == $user->id; 
     }
 
@@ -46,7 +52,7 @@ class BoardPolicy
      */
     public function create(User $user)
     {
-        //
+        //La règle est que l'utilisateur doit être connecté pour créer un board
         return Auth::user()->id === $user->id; 
     }
 
@@ -59,8 +65,8 @@ class BoardPolicy
      */
     public function update(User $user, Board $board)
     {
-        //
-        return $user->id ===  $board->user_id; //$board->owner->id;
+        //La règle est que seul le propriétaire du board peut le modifier
+        return $user->id ===  $board->user_id;
     }
 
     /**
@@ -72,7 +78,8 @@ class BoardPolicy
      */
     public function delete(User $user, Board $board)
     {
-        return $user->id ===  $board->user_id; //$board->owner->id;
+        //La règle est que seul le propriétaire du board peut le supprimer
+        return $user->id ===  $board->user_id;
     }
 
 }

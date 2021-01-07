@@ -49,6 +49,7 @@ class User extends Authenticatable
                     ;
     }
 
+    
     /**
      * Renvoi la liste des toutes les tâches des boards auxquel l'utilisateur participe
      * (hormis celles du board dont il est le propriétaire! )
@@ -83,6 +84,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Comment');
     }
+
 
     /**
      * Renvoi la liste des pièces jointes posées par l'utilisateur

@@ -4,6 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration CreatePersonalAccessTokensTable qui permet de gérer les accès
+ * 
+ * @author Thomas Payan <thomas.payan@ynov.com>
+ * 
+ */
 class CreatePersonalAccessTokensTable extends Migration
 {
     /**

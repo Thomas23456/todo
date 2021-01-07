@@ -14,19 +14,7 @@ use App\Models\{Task, User};
  */
 class TaskUser extends Pivot
 {
-    //
     use HasFactory; 
-
-
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @see https://laravel.com/docs/8.x/eloquent-relationships#defining-custom-intermediate-table-models
-     * @var bool
-     */
-    public $incrementing = true;
-
-    protected $primaryKey = "id";
 
     /**
      * The "booted" method of the model.
@@ -44,6 +32,27 @@ class TaskUser extends Pivot
             return $task_user->task->board->users->find($task_user->user_id ) !== null; 
         });
     }
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = true; //Comme c'est une table Pivot, il faut lui indiquer que la clé primaire est incrémentée
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public $fillable=["assigned",'user_id','task_id'];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'task_user';
 
 
     /**
@@ -66,5 +75,4 @@ class TaskUser extends Pivot
     {
         return $this->belongsTo(Task::class);
     }
-
 }

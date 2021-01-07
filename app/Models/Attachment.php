@@ -16,6 +16,20 @@ class Attachment extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public $fillable = ['file',"filename",'size','type','user_id','task_id'];
+    
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'attachments';
+
 
     /**
      * Renvoi l'utilisateur qui a posé la pièce jointe
