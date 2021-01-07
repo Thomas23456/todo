@@ -2,6 +2,7 @@
 
 @section('title', "Edit board" . $board->title)
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
     <div class="add_board">

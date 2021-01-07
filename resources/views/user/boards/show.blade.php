@@ -2,6 +2,7 @@
 
 @section('title', "User's board " . $board->title)
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
     <div class="titre_boards">{{$board->title}}</div>

@@ -2,6 +2,7 @@
 
 @section('title', "Task's comments")
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
     @if(count($task->comments) == 0)

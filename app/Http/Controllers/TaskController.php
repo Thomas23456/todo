@@ -55,7 +55,7 @@ class TaskController extends Controller
             'description' => 'nullable|string|max:4096',
             'due_date' => 'date|after_or_equal:tomorrow',
             'category_id' => 'nullable|integer|exists:categories,id',
-            'state'=>'required|in:todo,ongoing,done',
+            'state' => 'required|in:todo,ongoing,done',
         ]);
 
         $task= new Task();

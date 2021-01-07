@@ -2,6 +2,7 @@
 
 @section('title', "Update a comment")
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
 <div class="add_com">

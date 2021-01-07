@@ -2,6 +2,7 @@
 
 @section('title', "User's board")
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
     @if(count($boards) == 0)

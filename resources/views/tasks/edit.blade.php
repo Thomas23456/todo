@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
-@section('title', "Update a task")
+@section('title', "Update task" . $task->title)
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
 <div class="update_task">

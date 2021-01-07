@@ -2,6 +2,7 @@
 
 @section('title', "Board's tasks")
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
     @if(count($board->tasks) == 0)

@@ -3,7 +3,6 @@
 <html>
     <head>
         <title>Todo - @yield('title')</title>
-        <link rel="stylesheet" href="{{ mix('css/style.css') }}">
         <style> 
             .is-invalid {border: 1px solid red;}
             .alert {color:red;}

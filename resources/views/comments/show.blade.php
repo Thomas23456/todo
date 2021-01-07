@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
-@section('title', "Task " .  $task->title)
+@section('title', "A comment")
 
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('content')
     <div class="titre_boards">{{$board->title}} - {{$task->title}} - Commentaire</div>
