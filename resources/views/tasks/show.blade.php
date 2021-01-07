@@ -5,14 +5,28 @@
 
 @section('content')
     <div class="titre_boards">{{$board->title}} - {{$task->title}}</div>
-    <div class="descript_board owner_form">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}
+    <div class="descript_board">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}</div>
+    <div class="descript_board owner_form">Transférer la propriété de la tâche à
         @if($board->owner->id === $owner->id)
-            <form action="{{route('boards.show', $owner->id)}}" method="POST" class="contain_owner_form">
+            <form action="{{route('boards.update', $board)}}" method="POST" class="contain_owner_form">
                 @csrf
-                @method('PUT')
+                @method('PUT')    
+                <select name="user_id" id="user_id" class="add_user_margin">
+                    @foreach($task->assignedUsers as $user)
+                        @if($user->id != $board->owner->id)
+                            <option value="{{$user->id}}">{{$user->name}} : {{$user->email}}</option>
+                        @endif
+                    @endforeach
+                </select>
+                @error('user_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <input id="title" name="title" type="text" class="hidden_input" value="{{$board->title}}">
+                <input id="description" name='description' type="textarea" class="hidden_input" value="{{$board->description}}">
                 <button type="submit">Editer</button>
             </form>
         @endif
+        <div class="add_info_margin">Attention ! Vous perdrez le proppriété du board également.</div>
     </div>
     <div class="descript_board">Description : {{$task->description}}
     <p>À finir avant le  : {{$task->due_date}}</p>

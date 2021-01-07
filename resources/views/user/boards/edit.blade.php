@@ -24,6 +24,7 @@
                         <label for="description">Description : </label>
                         <input type='textarea' name='description' id="description" value="{{$board->description}}">
                     </div>
+                    <input type='text' name='user_id' id="user_id" value="{{$board->owner->id}}" class="hidden_input">
                     <button type="submit" class="component_margin button_create">Update</button>
                 </form>
             </div>

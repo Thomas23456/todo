@@ -35,7 +35,7 @@
             </td>
             <td>
                 @can('update', $board)
-                <div class="contain_link_table2"><a href="{{route('boards.edit', $board)}}">Editer</a></div>
+                    <div class="contain_link_table2"><a href="{{route('boards.edit', $board)}}">Editer</a></div>
                 @endcan
             </td>
             <td>

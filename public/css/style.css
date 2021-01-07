@@ -138,6 +138,12 @@
     box-shadow: 3px 3px 3px grey;
 }
 
+/* VIEW UPDATE USER */
+
+.hidden_input{
+    display: none;
+}
+
 /* VIEW CREATE USER */
 
 .add_board{
@@ -207,6 +213,12 @@
 
 .add_user_margin{
     margin-right: 20px;
+}
+
+.add_info_margin{
+    margin-left: 20px;
+    color: red;
+    font-weight: bold;
 }
 
 #user_id, #participant_id{

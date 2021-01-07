@@ -112,9 +112,11 @@ class BoardController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'max:4096',
+            'user_id' => 'required',
         ]);
         $board->title = $validatedData['title']; 
         $board->description = $validatedData['description']; 
+        $board->user_id = $validatedData['user_id']; 
         $board->update();
 
         return redirect()->route('boards.index');
