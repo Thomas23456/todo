@@ -30,21 +30,29 @@
                 "Commentaire" 
             </td>
             <td>
-                <div class="contain_link_table"><a href="{{route('comments.show', [$board, $task, $comment])}}">Détails</a></div>
+                @can('view', $comment)
+                    <div class="contain_link_table"><a href="{{route('comments.show', [$board, $task, $comment])}}">Détails</a></div>
+                @endcan
             </td>
             <td>
-                <div class="contain_link_table2"><a href="{{route('comments.edit', [$board, $task, $comment])}}">Editer</a></div>
+                @can('update', $comment)
+                    <div class="contain_link_table2"><a href="{{route('comments.edit', [$board, $task, $comment])}}">Editer</a></div>
+                @endcan
             </td>
             <td>
-                <form action="{{route('comments.destroy', [$board, $task, $comment])}}" method='POST' class="contain_link_table">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit">Supprimer</button>
-                </form>
+                @can('delete', $comment)
+                    <form action="{{route('comments.destroy', [$board, $task, $comment])}}" method='POST' class="contain_link_table">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit">Supprimer</button>
+                    </form>
+                @endcan
             </td>
         </tr>
         @endforeach
     </table></div>
-    <div class="link_page">Ajouter<a href="{{route('comments.create', [$board, $task])}}">Nouveau Commentaire</a></div>
+        @can('create', $comment)
+            <div class="link_page">Ajouter<a href="{{route('comments.create', [$board, $task])}}">Nouveau Commentaire</a></div>
+        @endcan
     @endif
 @endsection

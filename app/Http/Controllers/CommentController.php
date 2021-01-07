@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{Comment,Task, Board};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -44,10 +45,13 @@ class CommentController extends Controller
         $validatedData = $request->validate([
             'text' => 'required|string|max:255',
         ]);
-        // TODO :  Il faut vérifier que le board auquel appartient la tâche appartient aussi à l'utilisateur qui fait cet ajout. 
-        $validatedData['board_id'] = $board->id;
-        $validatedData['task_id'] = $task->id;
-        Comment::create($validatedData); 
+        //
+        $comment = new Comment(); 
+        $comment->user_id = Auth::user()->id; 
+        $comment->task_id = $task->id;
+        $comment->text = $validatedData['text']; 
+        $comment->save();
+
         return redirect()->route('comments.index', [$board, $task]);
 
     }
