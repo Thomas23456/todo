@@ -43,18 +43,22 @@
             <tr>
                 <td>{{$user->name}} : {{$user->email}}</td>
                 <td>
-                    <form action="{{route('tasks.taskuser.destroy', $user->pivot->id)}}" method="POST" class="contain_link_table">
-                        @csrf
-                        @method("DELETE")
-                        <button type="submit">Supprimer</button>
-                    </form>
+                    @if($owner->id == $board->owner->id)
+                        <form action="{{route('tasks.taskuser.destroy', $user->pivot->id)}}" method="POST" class="contain_link_table">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    @else
+                        <div>Non authorisé</div>
+                    @endif
                 </td>
                 </tr>
             @endforeach
         </table>
     </div>
     <div class="add_user">
-        <div class="add_user_margin">Liste des utilisateurs : </div>
+        <div class="add_user_margin">Ajouter un utilisateur à la tâche</div>
         <form action="{{route('tasks.taskuser.store', [$board, $task])}}" method="POST">
             @csrf
             <select name="participant_id" id="participant_id" class="add_user_margin">

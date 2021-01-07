@@ -23,11 +23,12 @@
   
  1.4. En tant que participant d'un board (invité par son propriétaire), je peux
     - créer une tâche 
-    - m'assinger une tâche
-    - assigner la tâches à des utilisateur du board
-    - éditer tous les champs d'une tâche
-    - transferer la propriété et j'en serai donc seulement participant (impossible -> seulement si je suis propriétaire du board
-      et je donnerai également la propriété du board au nouvel utilisateur)
+    - m'assigner une tâche
+    - assigner la tâche à des utilisateur du board
+    - éditer tous les champs d'une tâche (sauf le status)
+    - transferer la propriété de la tâche et j'en serai donc seulement participant (impossible -> seulement si je suis propriétaire du board
+      et je donnerai également la propriété du board au nouvel utilisateur car il n'y a pas de propriétaire sur une tâche mais seulement des
+      participants, celle-ci étant rattachée au board)
     - commenter une tâche
   
  1.5. En tant qu'assigné à une tâche, je peux : 
@@ -46,6 +47,8 @@
  - Changer de vue tout en gardant les infos précédentes
  - Utilisations des jetons
  - Comprendre les différentes actions du CRUD
+ - Suppression d'un participant d'un board/d'une task
+ - Création d'une tâche -> mettre le créateur en particpant comme pour le board (4 tests ne passent plus)
 
 
 3. Les solutions mises en oeuvre :
@@ -57,6 +60,8 @@
    c-a-d --> ex : {{route('tasks.destroy', [$board, $task])}} (ici on passe le board et la task associée pour le futur commentaire)
  - Se renseigner sur la doc et suivre le cours
  - Transformer les actions dont nous avions l'habitude et les adapter avec Laravel (ex : INSERT --> create() puis store())
+ - Correction de la variable mal écrite
+ - Recherches + aide du prof
 
 
 4. Les fonctionnalités non réalisées :

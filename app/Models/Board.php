@@ -30,6 +30,19 @@ class Board extends Model
         });
     }
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public $fillable = ["title",'description','user_id'];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'boards';
 
     /**
      * Renvoie l'utilisateur propriétaire du board (celui qui l'a créé)

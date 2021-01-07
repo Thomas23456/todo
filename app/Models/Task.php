@@ -21,16 +21,15 @@ class Task extends Model
      *
      * @return void
      */
-    protected static function booted()
+    /*protected static function booted()
     {
         static::created(function ($task) {
             $task_user = new TaskUser(); 
             $task_user->task_id = $task->id; 
-            $owner = Board::where('id', $task->board_id)->first();
-            $task_user->user_id = $owner->user_id; 
+            $task_user->user_id = $task->board->user_id;
             $task_user->save();
         });
-    }
+    }*/
 
     /**
      * The attributes that are mass assignable.

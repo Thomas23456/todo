@@ -23,7 +23,20 @@ class BoardUser extends Pivot
      */
     public $incrementing = true;
 
-    protected $primaryKey = "id";
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public $fillable = ['user_id','board_id'];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'board_user';
+
 
     /**
      * Renvoi l'utilisateur lié au board

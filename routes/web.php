@@ -43,8 +43,8 @@ Route::resource('boards/{board}/tasks/{task}/comments', CommentController::class
 
 //routes pour les boarduser
 Route::post('boards/{board}/boarduser', [BoardUserController::class ,  'store'])->middleware('auth')->name('boards.boarduser.store');
-Route::delete('boarduser/{BoardUser}', [BoardUserController::class ,  'destroy'])->middleware('auth')->name('boards.boarduser.destroy');
+Route::delete('boarduser/{boardUser}', [BoardUserController::class ,  'destroy'])->middleware('auth')->name('boards.boarduser.destroy');
 
 //routes pour les taskuser
 Route::post('boards/{board}/tasks/{task}/taskuser', [TaskUserController::class ,  'store'])->middleware('auth')->name('tasks.taskuser.store');
-Route::delete('taskuser/{TaskUser}', [TaskUserController::class ,  'destroy'])->middleware('auth')->name('tasks.taskuser.destroy');
+Route::delete('taskuser/{taskUser}', [TaskUserController::class ,  'destroy'])->middleware('auth')->name('tasks.taskuser.destroy');
