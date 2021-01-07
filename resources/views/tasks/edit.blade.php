@@ -44,17 +44,19 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     
-                    <div class="component_margin">
-                        <label for="state">Etat : </label>
-                        <select name="state" id="state" value="{{$task->state}}">
-                            @foreach (['todo', 'ongoing', 'done'] as $state)
-                            <option value="{{$state}}">{{$state}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @error('category')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    @if(in_array($user->id, array_column(json_decode($task->assignedUsers, true), 'id')))
+                        <div class="component_margin">
+                            <label for="state">Etat : </label>
+                            <select name="state" id="state" value="{{$task->state}}">
+                                @foreach (['todo', 'ongoing', 'done'] as $state)
+                                <option value="{{$state}}">{{$state}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('state')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    @endif
                     
                     <button type="submit" class="component_margin button_create">Update</button>
                 </form>

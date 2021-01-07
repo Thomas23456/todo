@@ -6,8 +6,8 @@
 @section('content')
     <div class="titre_boards">{{$board->title}} - {{$task->title}}</div>
     <div class="descript_board">Propriétaire : {{$board->owner->name}} - {{$board->owner->email}}</div>
-    <div class="descript_board owner_form">Transférer la propriété de la tâche à
-        @if($board->owner->id === $owner->id)
+    @if($board->owner->id === $owner->id)
+        <div class="descript_board owner_form">Transférer la propriété de la tâche à
             <form action="{{route('boards.update', $board)}}" method="POST" class="contain_owner_form">
                 @csrf
                 @method('PUT')    
@@ -25,8 +25,8 @@
                 <input id="description" name='description' type="textarea" class="hidden_input" value="{{$board->description}}">
                 <button type="submit">Editer</button>
             </form>
-        @endif
         <div class="add_info_margin">Attention ! Vous perdrez le proppriété du board également.</div>
+        @endif
     </div>
     <div class="descript_board">Description : {{$task->description}}
     <p>À finir avant le  : {{$task->due_date}}</p>

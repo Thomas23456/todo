@@ -61,7 +61,7 @@ class TaskPolicy
     {
         // La règle est qu'un utilisateur doit être participant du board pour pouvoir modifier la tâche
         return $task                          // La board que l'utilisateur veut voir
-                    ->assignedUsers           // les utilisateurs qui participent à la board reliés à la tâche
+                    ->participants           // les utilisateurs qui participent à la board reliés à la tâche
                     ->find(Auth::user()->id)  // On cherche dans les participants l'utilisateur qui effectue l'action (on aurait pu faire : ->where('id', '=', $user->id))
                     !== null;                 // Si on obtient un résultat différent de null, c'est que l'on y a trouvé l'utilisateur
     }

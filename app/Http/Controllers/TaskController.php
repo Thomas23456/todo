@@ -77,7 +77,7 @@ class TaskController extends Controller
     public function edit(Board $board, Task $task)
     {
         //
-        return view('tasks.edit', ['board' => $board, 'task' => $task, 'categories' => Category::all()]);
+        return view('tasks.edit', ['board' => $board, 'task' => $task, 'categories' => Category::all(), 'user' => Auth::user()]);
     }
 
     /**
