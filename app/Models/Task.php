@@ -21,7 +21,7 @@ class Task extends Model
      *
      * @return void
      */
-    /*protected static function booted()
+    protected static function booted()
     {
         static::created(function ($task) {
             $task_user = new TaskUser(); 
@@ -29,7 +29,7 @@ class Task extends Model
             $task_user->user_id = $task->board->user_id;
             $task_user->save();
         });
-    }*/
+    }
 
     /**
      * The attributes that should be cast to native types.
